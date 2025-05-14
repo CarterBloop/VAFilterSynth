@@ -1,0 +1,29 @@
+# ================
+# Xcode
+# ================
+# Xcode project workspace & user settings
+*.xcworkspace
+*.xcuserstate
+*.xcuserdata/
+# schemes & shared data
+xcshareddata/
+# build products
+build/
+DerivedData/
+
+# ================
+# JUCE / Projucer
+# ================
+# don’t track Projucer’s user prefs
+*.jucer.user
+# if you regenerate your IDE project, you don’t need the old Xcode project:
+Builds/
+
+# ================
+# OS /
+# IDE junk
+# ================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
