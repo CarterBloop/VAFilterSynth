@@ -3,6 +3,8 @@
 A compact & partially virtual analog synth plugin built in C++ with JUCE.
 Features two PolyBLEP sawtooth oscillators and a 4-pole diode-ladder VCF modeled on the EMS VCS3.
 
+![VAFS Screenshot](/VAFS_Screenshot.png?raw=true "VAFS Screenshot")
+
 ## Features
 - **PolyBLEP Sawtooth Oscillators**: Bandlimited alias-free waveform generation.
 - **Diode-Ladder VCF**: Nonlinear digital emulation of the EMS VCS3 filter.
