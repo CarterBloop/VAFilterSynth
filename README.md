@@ -2,11 +2,12 @@
 
 A compact & partially virtual analog synth plugin built in C++ with JUCE.
 Features two PolyBLEP sawtooth oscillators and a 4-pole diode-ladder VCF modeled on the EMS VCS3.
+VAFilterSynth runs its oscillators at 2× oversampling to tame aliasing right at the source, then feeds into a 3×-oversampled filter stage, delivering clean harmonics while keeping latency and resource usage low. 
 
 ![VAFS Screenshot](/VAFS_Screenshot.png?raw=true "VAFS Screenshot")
 
 ## Features
-- **PolyBLEP Sawtooth Oscillators**: Bandlimited alias-free waveform generation.
+- **PolyBLEP Sawtooth Oscillators**: Mathematically bandlimited and alias-free waveform generation.
 - **Diode-Ladder VCF**: Nonlinear digital emulation of the EMS VCS3 filter.
   > Based on “A NONLINEAR DIGITAL MODEL OF THE EMS VCS3 VOLTAGE-CONTROLLED FILTER”
   > Marco Civolani & Federico Fontana ([link](https://www.researchgate.net/publication/224130819_Modeling_of_the_EMS_VCS3_Voltage-Controlled_Filter_as_a_Nonlinear_Filter_Network))
