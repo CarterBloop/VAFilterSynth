@@ -1,6 +1,6 @@
 # VAFilterSynth
 
-A compact & partially virtual analog synthesiser plugin built in C++ with JUCE.
+A compact & partially virtual analog synthesizer plugin built in C++ with JUCE.
 Features two sawtooth oscillators and a 4-pole diode-ladder VCF modeled on the EMS VCS3.
 
 Main challenges were fighting aliasing from the digital waveform generation and latency from the CPU-hungry VCF emulation.
