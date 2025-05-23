@@ -1,13 +1,15 @@
 # VAFilterSynth
 
-A compact & partially virtual analog synth plugin built in C++ with JUCE.
-Features two PolyBLEP sawtooth oscillators and a 4-pole diode-ladder VCF modeled on the EMS VCS3.
-VAFilterSynth runs its oscillators at 2× oversampling to tame aliasing right at the source, then feeds into a 3×-oversampled filter stage, delivering clean harmonics while keeping latency and resource usage low. 
+A compact & partially virtual analog synthesiser plugin built in C++ with JUCE.
+Features two sawtooth oscillators and a 4-pole diode-ladder VCF modeled on the EMS VCS3.
+
+Main challenges were fighting aliasing from the digital waveform generation and latency from the CPU-hungry VCF emulation.
 
 ![VAFS Screenshot](/VAFS_Screenshot.png?raw=true "VAFS Screenshot")
 
 ## Features
-- **PolyBLEP Sawtooth Oscillators**: Mathematically bandlimited and alias-free waveform generation.
+- **Band-Limited**: Utilizes PolyBLEP to band-limit the digital oscillators and minimize aliasing.
+- **Multi-Stage Oversampling**: Utilizes multi-stage oversampling to reduce aliasing without too much CPU load. 
 - **Diode-Ladder VCF**: Nonlinear digital emulation of the EMS VCS3 filter.
   > Based on “A NONLINEAR DIGITAL MODEL OF THE EMS VCS3 VOLTAGE-CONTROLLED FILTER”
   > Marco Civolani & Federico Fontana ([link](https://www.researchgate.net/publication/224130819_Modeling_of_the_EMS_VCS3_Voltage-Controlled_Filter_as_a_Nonlinear_Filter_Network))
@@ -16,6 +18,10 @@ VAFilterSynth runs its oscillators at 2× oversampling to tame aliasing right at
 1. Download VAFilterSynth.zip from [releases](https://github.com/CarterBloop/VAFilterSynth/releases/tag/0.1.0-alpha).
 2. Zip contains VST3 and AU plugin formats.
 4. Drop the resulting `.vst3`/`.component` into your host’s plugin folder.
+
+## Work In Progress!
+Currently fixing a buffer issue which occurs during multiple concurrent plugin instances, as well as some other issues.
+
 
 ## License
 
