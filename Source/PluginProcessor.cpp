@@ -77,12 +77,12 @@ const juce::String VAFilterSynthAudioProcessor::getProgramName(int index) {
     return {};
 }
 
-void VAFilterSynthAudioProcessor::changeProgramName(int index,
-                                                 const juce::String &newName) {}
+void VAFilterSynthAudioProcessor::changeProgramName(
+    int index, const juce::String &newName) {}
 
 //==============================================================================
 void VAFilterSynthAudioProcessor::prepareToPlay(double sampleRate,
-                                             int samplesPerBlock) {
+                                                int samplesPerBlock) {
     // Use this method as the place to do any pre-playback
     // initialisation that you need..
 
@@ -133,7 +133,7 @@ bool VAFilterSynthAudioProcessor::isBusesLayoutSupported(
 #endif
 
 void VAFilterSynthAudioProcessor::processBlock(juce::AudioBuffer<float> &buffer,
-                                            juce::MidiBuffer &midiMessages) {
+                                               juce::MidiBuffer &midiMessages) {
     juce::ScopedNoDenormals noDenormals;
     auto totalNumInputChannels = getTotalNumInputChannels();
     auto totalNumOutputChannels = getTotalNumOutputChannels();
@@ -184,7 +184,7 @@ void VAFilterSynthAudioProcessor::getStateInformation(
 }
 
 void VAFilterSynthAudioProcessor::setStateInformation(const void *data,
-                                                   int sizeInBytes) {
+                                                      int sizeInBytes) {
     // You should use this method to restore your parameters from this memory
     // block, whose contents will have been created by the getStateInformation()
     // call.

@@ -37,7 +37,6 @@ class SynthVoice : public juce::SynthesiserVoice {
 
     Adsr &getAdsr() { return adsr; }
     Adsr &getFilterAdsr() { return filterAdsr; }
-    float getFilterAdsrOutput() { return filterAdsrOutput; }
     void updateFilterParams(const float filterCutoff,
                             const float filterResonance, const float adsrDepth);
 
@@ -49,10 +48,20 @@ class SynthVoice : public juce::SynthesiserVoice {
 
     Adsr adsr;
     Adsr filterAdsr;
-    float filterAdsrOutput{0.0f};
+    std::vector<float> cutoffPerSample;
+
+    float filterCutoffParam = 1000.0f;
+    float filterResonanceParam = 0.1f;
+    float filterEnvDepthParam = 10000.0f;
+
+    std::array<std::unique_ptr<juce::dsp::Oversampling<float>>,
+               numChannelsToProcess>
+        oversamplers;
+    static constexpr int oversamplingFactor = 4; // 2x, 4x, or 8x
+    static constexpr int oversamplingStages = 2; // 1, 2, or 3
 
     juce::AudioBuffer<float> synthBuffer;
-
     juce::dsp::Gain<float> gain;
+
     bool isPrepared{false};
 };
