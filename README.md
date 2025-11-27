@@ -1,7 +1,6 @@
 # VAFilterSynth
 
-A compact & partially virtual analog synthesizer plugin built in C++ with JUCE.
-Features two sawtooth oscillators and a 4-pole diode-ladder VCF modeled on the EMS VCS3.
+A digital synthesizer plugin built with JUCE and C++. The purpose of this project is to experiment with digital models of analog circuits (virtual analog), commonly applied to electronic instruments and effect pedals. Features two sawtooth oscillators and a 4-pole diode-ladder VCF modeled on the EMS VCS3.
 
 Main challenges were fighting aliasing from the digital waveform generation and latency from the CPU-hungry VCF emulation.
 
@@ -9,10 +8,13 @@ Main challenges were fighting aliasing from the digital waveform generation and 
 
 ## Features
 - **Band-Limited**: Utilizes PolyBLEP to band-limit the digital oscillators and minimize aliasing.
-- **Multi-Stage Oversampling**: Utilizes multi-stage oversampling to reduce aliasing without too much CPU load. 
+- **Multi-Stage Oversampling**: Utilizes multi-stage oversampling to efficiently reduce aliasing.
 - **Diode-Ladder VCF**: Nonlinear digital emulation of the EMS VCS3 filter.
   > Based on “A NONLINEAR DIGITAL MODEL OF THE EMS VCS3 VOLTAGE-CONTROLLED FILTER”
   > Marco Civolani & Federico Fontana ([link](https://www.researchgate.net/publication/224130819_Modeling_of_the_EMS_VCS3_Voltage-Controlled_Filter_as_a_Nonlinear_Filter_Network))
+
+## VCF Discretization & Modeling Technique
+The lowpass filter is modeled using the continuous-time diode-ladder equations from “A NONLINEAR DIGITAL MODEL OF THE EMS VCS3 VOLTAGE-CONTROLLED FILTER”, which are converted to a digital form using trapezoidal integration. This discretization method produces an implicit nonlinear system that must be solved every sample. The filter then uses a per-sample iterative solver to resolve the diode currents and ladder node voltages, with state variables representing the capacitor charges in each pole.
 
 ## Quick Start
 1. Download VAFilterSynth.zip from [releases](https://github.com/CarterBloop/VAFilterSynth/releases/tag/0.1.0-alpha).
