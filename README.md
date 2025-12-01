@@ -21,10 +21,6 @@ The lowpass filter is modeled using the continuous-time diode-ladder equations f
 2. Zip contains VST3 and AU plugin formats.
 4. Drop the resulting `.vst3`/`.component` into your host’s plugin folder.
 
-## Work In Progress!
-Currently fixing a buffer issue which occurs during multiple concurrent plugin instances, as well as some other issues.
-
-
 ## License
 
 MIT License
